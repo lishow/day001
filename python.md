@@ -62,6 +62,7 @@ if __name__ == '__main__':
 在寻求了[大佬shisiying](http://www.xhzyxed.cn/)的帮助后，成功得到了200  
 
 显示请求的信息  
+```
 # -*- coding:utf-8 -*-
 import http.server
 
@@ -111,3 +112,4 @@ if __name__ == '__main__':
     serverAddress = ('', 8080)
     server = http.server.HTTPServer(serverAddress, RequestHandler)
     server.serve_forever()
+```
