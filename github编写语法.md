@@ -41,7 +41,7 @@ protected void onDestroy() {
  
 5、其他引用  
 图片  
-[百度](https://www.baidu.com/img/bd_logo1.png)  
+[图片名称](https://www.baidu.com/img/bd_logo1.png)  
 链接  
 [链接名称](https://www.baidu.com/)    
 6、列表 
