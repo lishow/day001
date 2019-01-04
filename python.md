@@ -56,4 +56,4 @@ if __name__ == '__main__':
 ```
 调试过程中没有注意大小写和缩进的区分，浏览器一直是501 不支持‘GET’方法
 在寻求了大佬shisiying的帮助后，成功得到了200  
-大佬的链接：http://www.xhzyxed.cn/
+[大佬的链接] (http://www.xhzyxed.cn/)
