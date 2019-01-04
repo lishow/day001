@@ -21,7 +21,7 @@ file > newproject > pure python > location:D:/pycharmproject/day001 >create
 * 了解该请求的内容  
 * 服务器根据请求抓取需要的数据（从服务器本地文件中读取或者程序动态生成）  
 * 将数据格式化为请求需要的格式  
-* 返回HTTP响应
+* 返回HTTP响应  
 尝试编写第一个Web服务器
 ```
 # -*- coding:utf-8 -*-
