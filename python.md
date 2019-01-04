@@ -24,9 +24,9 @@ file > newproject > pure python > location:D:/pycharmproject/day001 >create
 * 返回HTTP响应  
  
 尝试编写第一个Web服务器  
-完成的是斜体部分内容  
-
-
+我们的工作是斜体部分内容
+正体部分内容python标准库中的BaseHTTPServer可以帮助我们模块处理  
+ 
 ```
 # -*- coding:utf-8 -*-
 import http.server
@@ -61,3 +61,53 @@ if __name__ == '__main__':
 调试过程中没有注意大小写和缩进的区分，浏览器一直是501 不支持‘GET’方法
 在寻求了[大佬shisiying](http://www.xhzyxed.cn/)的帮助后，成功得到了200  
 
+显示请求的信息  
+# -*- coding:utf-8 -*-
+import http.server
+
+
+class RequestHandler(http.server.BaseHTTPRequestHandler):
+    """处理请求并返回页面"""
+
+    # 页面模板
+    Page = '''\
+    <html>
+    <body>
+    <table>
+    <tr>  <td>Header</td>         <td>Value</td>          </tr>
+    <tr>  <td>Date and time</td>  <td>{date_time}</td>    </tr>
+    <tr>  <td>Client host</td>    <td>{client_host}</td>  </tr>
+    <tr>  <td>Client port</td>    <td>{client_port}</td>  </tr>
+    <tr>  <td>Command</td>        <td>{command}</td>      </tr>
+    <tr>  <td>Path</td>           <td>{path}</td>         </tr>
+    </table>
+    </body>
+    </html>'''
+
+    def do_GET(self):
+        page = self.create_page()
+        self.send_content(page)
+
+    def create_page(self):
+        values = {
+            'date_time': self.date_time_string(),
+            'client_host': self.client_address[0],
+            'client_port': self.client_address[1],
+            'command': self.command,
+            'path': self.path
+        }
+        page = self.Page.format(**values)
+        return page
+
+    def send_content(self, page):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html")
+        self.send_header("Content-Length", str(len(self.Page)))
+        self.end_headers()
+        self.wfile.write(self.Page.encode('utf-8'))
+
+
+if __name__ == '__main__':
+    serverAddress = ('', 8080)
+    server = http.server.HTTPServer(serverAddress, RequestHandler)
+    server.serve_forever()
