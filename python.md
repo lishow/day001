@@ -55,3 +55,5 @@ if __name__ == '__main__':
     server.serve_forever()
 ```
 调试过程中没有注意大小写和缩进的区分，浏览器一直是501 不支持‘GET’方法
+在寻求了大佬shisiying的帮助后，成功得到了200
+http://www.xhzyxed.cn/
